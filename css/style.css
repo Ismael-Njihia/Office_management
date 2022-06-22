@@ -134,3 +134,9 @@
 .myChart {
     height: 30vh;
 }
+
+.topHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
