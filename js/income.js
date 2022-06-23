@@ -1,21 +1,33 @@
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        const userId = user.uid;
+        //who is logged in?
+        let userId = user.uid;
         console.log(userId)
+            //userType logged in
+        firebase.firestore().collection("users").doc(userId).get().then((doc) => {
+                let userName = doc.data().userName;
+                let userType = doc.data().userType;
 
+                document.getElementById("navUserName").innerText = userName;
+                document.getElementById("navUserType").innerText = userType;
+            })
+            //capture the user input
+        document.getElementById("submit").onclick = function() {
+            let incomeAmount = document.getElementById("incomeAmount").Value;
+            let incomeAddTime = document.getElementById("incomeAddTime").Value;
+            let incomeFrom = document.getElementById("incomeFrom").Value;
+            let incomeDescription = document.getElementById("incomeDescription").Value;
+            let paymentMethod = document.getElementById("paymentMethod").Value;
 
-        document.getElementById("addIncome").onclick = function() {
-            let incomeAmount = document.getElementById("incomeAmount").value;
-            let incomeAddTime = document.getElementById("incomeAddTime").value;
-            let incomeFrom = document.getElementById("incomeFrom").value;
-            let incomeDescription = document.getElementById("incomeDescription").value;
-            let paymentMethod = document.getElementById("paymentMethod").value;
-
-            firebase.firestore
-
+            firebase.firestore().collection("Income").doc().set({
+                incomeAmount: incomeAmount,
+                incomeAddTime: incomeAddTime,
+                incomeFrom: incomeFrom,
+                incomeDescription: incomeDescription,
+                paymentMethod: paymentMethod
+            })
         }
     } else {
-        alert("You are not logged in!");
-        window.location.href = "/index.html";
+        window.location.href = "/Office_management/index.html"
     }
 })
