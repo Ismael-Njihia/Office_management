@@ -6,7 +6,7 @@ document.getElementById("login").onclick = function() {
     firebase.auth().signInWithEmailAndPassword(Email, Password).then((userCred) => {
         let userId = userCred.user.uid;
         //getting the UserType from the firestore
-        firebase.firestore().collection("Users").doc(userId).get().then((user) => {
+        firebase.firestore().collection("users").doc(userId).get().then((user) => {
             let UserType = user.data().userType;
 
             if (UserType == "admin") {

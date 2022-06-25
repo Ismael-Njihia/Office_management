@@ -140,3 +140,22 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.mainSetting {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80vh;
+}
+
+.sett1 {
+    width: 47%;
+    height: 100%;
+    margin-left: 3%;
+}
+
+.sett2 {
+    width: 45%;
+    height: 100%;
+    margin-left: 5%;
+}

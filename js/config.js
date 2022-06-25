@@ -1,11 +1,11 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyApSsLCZynde9SmZ75ZsdOFVhj5I-mD1iE",
-    authDomain: "ofisi-4b35e.firebaseapp.com",
-    projectId: "ofisi-4b35e",
-    storageBucket: "ofisi-4b35e.appspot.com",
-    messagingSenderId: "360987545116",
-    appId: "1:360987545116:web:7c2216b19eb92ab51559d9",
-    measurementId: "G-4CSY7QY9VT"
+    apiKey: "AIzaSyBkfkSWQUijBd__4GyIK9SYu3585T2NKJQ",
+    authDomain: "office-management-1ab66.firebaseapp.com",
+    projectId: "office-management-1ab66",
+    storageBucket: "office-management-1ab66.appspot.com",
+    messagingSenderId: "432449310028",
+    appId: "1:432449310028:web:25d7294b3195fcd90993e9",
+    measurementId: "G-XSX6WKDMYF"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
