@@ -63,7 +63,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 contentIncome += '</tr>';
 
             })
-            $("incomeDisplay").append(contentIncome);
+            $("#incomeDisplay").append(contentIncome);
         })
 
 
