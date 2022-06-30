@@ -138,8 +138,10 @@ firebase.auth().onAuthStateChanged((user) => {
                     }
                 });
 
-
             })
+
+
+
         })
 
         firebase.firestore().collection("income").get().then((querSnapshot) => {

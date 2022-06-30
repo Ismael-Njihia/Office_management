@@ -38,34 +38,65 @@ firebase.auth().onAuthStateChanged((user) => {
             }
             //showing to the employee!
         firebase.firestore().collection("Employees").get().then((querySnapshot) => {
-            let content = '';
-            querySnapshot.forEach((doc) => {
-                let fullName = doc.data().fullName;
-                let nationalId = doc.data().nationalId;
-                let department = doc.data().department;
-                let salary = doc.data().salary;
-                let phoneNo = doc.data().phoneNo;
-                let empType = doc.data().empType;
+                let content = '';
+                querySnapshot.forEach((doc) => {
+                    let fullName = doc.data().fullName;
+                    let nationalId = doc.data().nationalId;
+                    let department = doc.data().department;
+                    let salary = doc.data().salary;
+                    let phoneNo = doc.data().phoneNo;
+                    let empType = doc.data().empType;
 
-                function addComma(value) {
-                    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                }
-                let salaryGood = addComma(salary);
+                    function addComma(value) {
+                        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    }
+                    let salaryGood = addComma(salary);
 
-                content += '<tr>';
-                content += '<td>' + fullName + '</td>';
-                content += '<td>' + nationalId + '</td>';
-                content += '<td>' + department + '</td>';
-                content += '<td>' + salaryGood + '</td>';
-                content += '<td>' + phoneNo + '</td>';
-                content += '<td>' + empType + '</td>';
-                content += '<td> <button class="btn btn-primary">Pay Salary</button> </td>';
-                content += '<td> <button class="btn btn-danger">Delete</button> </td>';
-                content += '</tr>';
+                    content += '<tr>';
+                    content += '<td>' + fullName + '</td>';
+                    content += '<td>' + nationalId + '</td>';
+                    content += '<td>' + department + '</td>';
+                    content += '<td>' + salaryGood + '</td>';
+                    content += '<td>' + phoneNo + '</td>';
+                    content += '<td>' + empType + '</td>';
+                    content += '<td> <button class="btn btn-primary">Pay Salary</button> </td>';
+                    content += '<td> <button class="btn btn-danger">Delete</button> </td>';
+                    content += '</tr>';
 
+                })
+                $("#employeesDisplay").append(content);
             })
-            $("#employeesDisplay").append(content);
-        })
+            //performing a search
+        document.getElementById("employee").onkeyup = function() {
+            document.getElementById("employeesDisplay").innerHTML = '';
+
+            let search = document.getElementById("employee").value;
+            console.log(search)
+            firebase.firestore().collection("Employees").where("fullName", ">=", search || "fullName", "<=", search).where("fullName", "<=", search + "~").get().then((querySnapshot) => {
+                let content = '';
+
+                querySnapshot.forEach((doc) => {
+                    let fullName = doc.data().fullName;
+                    let nationalId = doc.data().nationalId;
+                    let department = doc.data().department;
+                    let salary = doc.data().salary;
+                    let phoneNo = doc.data().phoneNo;
+                    let empType = doc.data().empType;
+
+                    content += '<tr>';
+                    content += '<td>' + fullName + '</td>';
+                    content += '<td>' + nationalId + '</td>';
+                    content += '<td>' + department + '</td>';
+                    content += '<td>' + salaryGood + '</td>';
+                    content += '<td>' + phoneNo + '</td>';
+                    content += '<td>' + empType + '</td>';
+                    content += '<td> <button class="btn btn-primary">Pay Salary</button> </td>';
+                    content += '<td> <button class="btn btn-danger">Delete</button> </td>';
+                    content += '</tr>';
+                })
+                $("#employeesDisplay").append(content);
+            })
+        }
 
 
     } else {

@@ -141,6 +141,11 @@
     justify-content: space-between;
 }
 
+.topHead button {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .mainSetting {
     display: flex;
     flex-direction: row;
@@ -158,4 +163,12 @@
     width: 45%;
     height: 100%;
     margin-left: 5%;
+}
+
+.input {
+    width: 40%;
+}
+
+.input input {
+    outline: none !important;
 }
