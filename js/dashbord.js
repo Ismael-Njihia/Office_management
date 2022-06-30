@@ -75,7 +75,7 @@ firebase.auth().onAuthStateChanged((user) => {
                     var DecFinal = (Dec += Income);
 
                 }
-                const ctx = document.getElementById('myChart').getContext('2d');
+                let ctx = document.getElementById('myChart').getContext('2d');
 
                 const myChart = new Chart(ctx, {
 
@@ -103,6 +103,7 @@ firebase.auth().onAuthStateChanged((user) => {
                                 ],
                                 borderWidth: 1
                             },
+
 
                             {
                                 label: 'Expense',
